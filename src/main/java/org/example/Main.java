@@ -20,6 +20,9 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             // 1. 싱글 윈도우 생성
             NavigationFrame mainFrame = new NavigationFrame("Q&A Client");
+            mainFrame.addMenu(new JButton("커스텀 1"));
+            mainFrame.addMenu(new JButton("커스텀 2"));
+            mainFrame.addMenu(new JButton("커스텀 3"));
 
             // 2. 공통 자원(Cookie 등) 초기화
             ICookie cookie = new Cookie();
