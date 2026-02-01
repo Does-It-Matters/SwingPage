@@ -1,5 +1,8 @@
 package org.example.core.page.presentation;
 
+import org.example.utils.Mode;
+import org.example.utils.ModeManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayDeque;
@@ -13,6 +16,9 @@ public class NavigationFrame extends JFrame {
     private final JButton prevBtn = new JButton("<");
     private final JButton nextBtn = new JButton(">");
 
+    private final JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+    private final ModeManager modeManager = new ModeManager();
+
     public NavigationFrame(String title) {
         super(title);
         setSize(500, 400);
@@ -21,7 +27,6 @@ public class NavigationFrame extends JFrame {
         setLocationRelativeTo(null); // 화면 중앙 배치
 
         // 1. 상단 네비게이션 패널
-        JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         navPanel.setBackground(new Color(245, 245, 245));
 
         // 버튼에 클릭 이벤트 연결
@@ -37,6 +42,11 @@ public class NavigationFrame extends JFrame {
         contents.setLayout(new BorderLayout());
         add(contents, BorderLayout.CENTER);
 
+        // 3. 다크 모드 추가
+        JButton themeBtn = getButton();
+        addMenu(themeBtn);
+
+        modeManager.applyTheme();
         setVisible(true);
     }
 
@@ -49,6 +59,10 @@ public class NavigationFrame extends JFrame {
         historyStack.push(page);
 
         setContents(page);
+    }
+
+    public void addMenu(JButton menu) {
+        navPanel.add(menu);
     }
 
     private void next() {
@@ -82,5 +96,17 @@ public class NavigationFrame extends JFrame {
         nextBtn.setEnabled(!forwardStack.isEmpty());
         contents.revalidate();
         contents.repaint();
+    }
+
+    private JButton getButton() {
+        JButton themeBtn = new JButton("모드");
+        themeBtn.addActionListener(
+                e -> {
+                    modeManager.toggle();
+                    String text = (modeManager.getMode() == Mode.DARK) ? "라이트 모드" : "다크 모드";
+                    themeBtn.setText(text);
+                }
+        );
+        return themeBtn;
     }
 }
