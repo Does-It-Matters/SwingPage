@@ -1,24 +1,24 @@
 package org.example.loader;
 
-import org.example.core.event.IEvent;
+import org.example.core.intent.IIntent;
 import org.example.core.loader.IPageLoader;
 import org.example.core.page.presentation.AbstractIPage;
 
 public class PageLoaderProvider {
     public static class PageLoaderBuilder {
-        private final PageEventBus eventBus = new PageEventBus();
-        private final EventPublisher publisher = new EventPublisher(eventBus);
+        private final PageDispatcher pageDispatcher = new PageDispatcher();
+        private final IntentDispatcher intentDispatcher = new IntentDispatcher(pageDispatcher);
         private final PageRegistry registry = new PageRegistry();
 
-        public PageLoaderBuilder register(IEvent event, AbstractIPage page) {
-            page.setEventPublisher(publisher);
-            registry.register(event, page);
+        public PageLoaderBuilder register(IIntent intent, AbstractIPage page) {
+            page.setEventPublisher(intentDispatcher);
+            registry.register(intent, page);
             return this;
         }
 
         public PageLoaderProvider build() {
-            var pageLoader = new PageLoaderWithEventListener(registry);
-            eventBus.register(pageLoader);
+            var pageLoader = new IntentDrivenPageLoader(registry);
+            pageDispatcher.register(pageLoader);
             return new PageLoaderProvider(pageLoader);
         }
     }

@@ -1,6 +1,6 @@
 package org.example.core.page.presentation;
 
-import org.example.core.loader.IEventPublisher;
+import org.example.core.dispatcher.IIntentDispatcher;
 
 import javax.swing.*;
 
@@ -21,7 +21,7 @@ public abstract class AbstractIPage {
         return controller.getLayout();
     }
 
-    public final void setEventPublisher(IEventPublisher publisher) {
-        controller.setEventPublisher(publisher);
+    public final void setEventPublisher(IIntentDispatcher dispatcher) {
+        controller.setIntentDispatcher(dispatcher);
     }
 }

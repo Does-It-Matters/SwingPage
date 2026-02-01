@@ -1,7 +1,7 @@
 package org.example.page.task.expert.user.signup;
 
 import org.example.core.page.presentation.AbstractController;
-import org.example.event.SignInEvent;
+import org.example.intent.SignIn;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,7 +53,7 @@ class Controller extends AbstractController {
 
         service.signUp(id, pw);
         System.out.printf("Expert User Sign up. ID: %s, pw: %s%n", id, pw);
-        publisher.publish(new SignInEvent());
+        dispatcher.dispatch(new SignIn());
     }
 
     private void alert() {
@@ -66,7 +66,7 @@ class Controller extends AbstractController {
     }
 
     private void onHomeButtonClick() {
-        publisher.publish(new SignInEvent());
+        dispatcher.dispatch(new SignIn());
         System.out.println("Go Home");
     }
 }

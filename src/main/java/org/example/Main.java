@@ -2,10 +2,10 @@ package org.example;
 
 import org.example.core.page.cookie.ICookie;
 import org.example.core.page.presentation.NavigationFrame;
-import org.example.event.ExpertUserSignUpEvent;
-import org.example.event.GeneralUserSignUpEvent;
-import org.example.event.MyPageEvent;
-import org.example.event.SignInEvent;
+import org.example.intent.ExpertUserSignUp;
+import org.example.intent.GeneralUserSignUp;
+import org.example.intent.MyPage;
+import org.example.intent.SignIn;
 import org.example.loader.PageLoaderProvider;
 import org.example.page.cookie.Cookie;
 import org.example.page.task.expert.user.signup.InjectorExpertUserSignUp;
@@ -29,15 +29,15 @@ public class Main {
 
             // 3. PageLoader 구성
             var pageLoader = PageLoaderProvider.builder()
-                    .register(new ExpertUserSignUpEvent(), InjectorExpertUserSignUp.getPage())
-                    .register(new GeneralUserSignUpEvent(), InjectorGeneralUserSignUp.getPage())
-                    .register(new SignInEvent(), InjectorSignIn.getPage(cookie))
-                    .register(new MyPageEvent(), InjectorMyPage.getPage(cookie))
+                    .register(new ExpertUserSignUp(), InjectorExpertUserSignUp.getPage())
+                    .register(new GeneralUserSignUp(), InjectorGeneralUserSignUp.getPage())
+                    .register(new SignIn(), InjectorSignIn.getPage(cookie))
+                    .register(new MyPage(), InjectorMyPage.getPage(cookie))
                     .build()
                     .getPageLoader();
 
             // 4. 어플리케이션 시작
-            pageLoader.start(mainFrame, new SignInEvent());
+            pageLoader.start(mainFrame, new SignIn());
         });
     }
 }

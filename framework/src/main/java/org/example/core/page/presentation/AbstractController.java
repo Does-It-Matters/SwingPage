@@ -1,13 +1,13 @@
 package org.example.core.page.presentation;
 
-import org.example.core.loader.IEventPublisher;
+import org.example.core.dispatcher.IIntentDispatcher;
 import org.example.core.page.application.AbstractService;
 
 import javax.swing.*;
 
 public abstract class AbstractController {
     protected final AbstractService service;
-    protected IEventPublisher publisher;
+    protected IIntentDispatcher dispatcher;
 
     // 레이어드 아키텍처를 적용하는 경우
     public AbstractController(AbstractService service) {
@@ -19,8 +19,8 @@ public abstract class AbstractController {
         this.service = null;
     }
 
-    public final void setEventPublisher(IEventPublisher publisher) {
-        this.publisher = publisher;
+    public final void setIntentDispatcher(IIntentDispatcher dispatcher) {
+        this.dispatcher = dispatcher;
     }
 
     public abstract JPanel getLayout();

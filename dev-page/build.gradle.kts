@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     implementation(project(":framework"))
-    implementation(project(":dev-event"))
+    implementation(project(":dev-intent"))
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

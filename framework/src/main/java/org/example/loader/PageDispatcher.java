@@ -1,10 +1,10 @@
 package org.example.loader;
 
-import org.example.core.event.IEvent;
-import org.example.core.loader.IPageEventBus;
+import org.example.core.intent.IIntent;
+import org.example.core.dispatcher.IPageDispatcher;
 import org.example.core.loader.IPageLoader;
 
-class PageEventBus implements IPageEventBus {
+class PageDispatcher implements IPageDispatcher {
     private IPageLoader pageLoader;
 
     @Override
@@ -13,7 +13,7 @@ class PageEventBus implements IPageEventBus {
     }
 
     @Override
-    public void publish(IEvent event) {
-        pageLoader.show(event);
+    public void dispatch(IIntent intent) {
+        pageLoader.show(intent);
     }
 }

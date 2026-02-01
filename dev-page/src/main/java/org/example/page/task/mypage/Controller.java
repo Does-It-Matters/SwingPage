@@ -2,7 +2,7 @@ package org.example.page.task.mypage;
 
 import org.example.core.page.application.AbstractService;
 import org.example.core.page.presentation.AbstractController;
-import org.example.event.SignInEvent;
+import org.example.intent.SignIn;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,6 +55,6 @@ class Controller extends AbstractController {
      */
     private void onLogoutButtonClick() {
         System.out.println("logout");
-        publisher.publish(new SignInEvent());
+        dispatcher.dispatch(new SignIn());
     }
 }

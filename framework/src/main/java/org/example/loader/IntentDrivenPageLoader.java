@@ -1,29 +1,28 @@
 package org.example.loader;
 
-import org.example.core.event.IEvent;
-import org.example.core.loader.IEventListener;
+import org.example.core.intent.IIntent;
 import org.example.core.loader.IPageLoader;
-import org.example.core.loader.IPageRegistry;
+import org.example.core.registry.IPageRegistry;
 import org.example.core.page.presentation.AbstractIPage;
 import org.example.core.page.presentation.NavigationFrame;
 
-class PageLoaderWithEventListener implements IPageLoader, IEventListener {
+class IntentDrivenPageLoader implements IPageLoader {
     private final IPageRegistry pageRegistry;
     private NavigationFrame frame;
 
-    PageLoaderWithEventListener(IPageRegistry pageRegistry) {
+    IntentDrivenPageLoader(IPageRegistry pageRegistry) {
         this.pageRegistry = pageRegistry;
     }
 
     @Override
-    public void start(NavigationFrame mainFrame, IEvent event) {
+    public void start(NavigationFrame mainFrame, IIntent intent) {
         this.frame = mainFrame;
-        show(event);
+        show(intent);
     }
 
     @Override
-    public void show(IEvent event) {
-        AbstractIPage page = pageRegistry.get(event);
+    public void show(IIntent intent) {
+        AbstractIPage page = pageRegistry.get(intent);
         if (page == null)
             return;
 

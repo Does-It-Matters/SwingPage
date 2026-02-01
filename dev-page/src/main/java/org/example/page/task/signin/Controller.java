@@ -2,9 +2,9 @@ package org.example.page.task.signin;
 
 import org.example.core.page.application.AbstractService;
 import org.example.core.page.presentation.AbstractController;
-import org.example.event.ExpertUserSignUpEvent;
-import org.example.event.GeneralUserSignUpEvent;
-import org.example.event.MyPageEvent;
+import org.example.intent.ExpertUserSignUp;
+import org.example.intent.GeneralUserSignUp;
+import org.example.intent.MyPage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -61,17 +61,17 @@ class Controller extends AbstractController {
         if (service instanceof Service user) {
             user.login(id, pw);
             System.out.printf("Sign in. ID: %s, pw: %s%n", id, pw);
-            publisher.publish(new MyPageEvent());
+            dispatcher.dispatch(new MyPage());
         }
     }
 
     private void onGeneralUserSignUpButtonClick() {
         System.out.println("general user Sign up");
-        publisher.publish(new GeneralUserSignUpEvent());
+        dispatcher.dispatch(new GeneralUserSignUp());
     }
 
     private void onExpertUserSignUpButtonClick() {
         System.out.println("expert user Sign up");
-        publisher.publish(new ExpertUserSignUpEvent());
+        dispatcher.dispatch(new ExpertUserSignUp());
     }
 }
