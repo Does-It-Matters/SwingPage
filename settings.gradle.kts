@@ -1,4 +1,4 @@
 rootProject.name = "SwingPage"
-include("Framework")
-include("dev_event")
-include("dev_page")
+include("framework")
+include("dev-event")
+include("dev-page")

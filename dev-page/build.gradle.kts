@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":Framework"))
-    implementation(project(":dev_event"))
+    implementation(project(":framework"))
+    implementation(project(":dev-event"))
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
