@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.core.page.cookie.ICookie;
+import org.example.core.page.presentation.NavigationFrame;
 import org.example.event.ExpertUserSignUpEvent;
 import org.example.event.GeneralUserSignUpEvent;
 import org.example.event.MyPageEvent;
@@ -18,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             // 1. 싱글 윈도우 생성
-            JFrame mainFrame = new JFrame("Q&A Client");
+            NavigationFrame mainFrame = new NavigationFrame("Q&A Client");
 
             // 2. 공통 자원(Cookie 등) 초기화
             ICookie cookie = new Cookie();
