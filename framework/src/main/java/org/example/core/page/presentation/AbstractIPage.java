@@ -21,7 +21,7 @@ public abstract class AbstractIPage {
         return controller.getLayout();
     }
 
-    public final void setEventPublisher(IIntentDispatcher dispatcher) {
+    public final void setIntentDispatcher(IIntentDispatcher dispatcher) {
         controller.setIntentDispatcher(dispatcher);
     }
 }

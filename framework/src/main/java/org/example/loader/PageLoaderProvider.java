@@ -11,7 +11,7 @@ public class PageLoaderProvider {
         private final PageRegistry registry = new PageRegistry();
 
         public PageLoaderBuilder register(IIntent intent, AbstractIPage page) {
-            page.setEventPublisher(intentDispatcher);
+            page.setIntentDispatcher(intentDispatcher);
             registry.register(intent, page);
             return this;
         }
