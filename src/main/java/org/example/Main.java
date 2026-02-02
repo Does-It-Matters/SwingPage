@@ -8,10 +8,10 @@ import org.example.intent.MyPage;
 import org.example.intent.SignIn;
 import org.example.loader.PageLoaderProvider;
 import org.example.page.cookie.Cookie;
-import org.example.page.task.expert.user.signup.InjectorExpertUserSignUp;
-import org.example.page.task.general.user.signup.InjectorGeneralUserSignUp;
-import org.example.page.task.mypage.InjectorMyPage;
-import org.example.page.task.signin.InjectorSignIn;
+import org.example.page.task.expert.user.signup.AssemblerExpertUserSignUp;
+import org.example.page.task.general.user.signup.AssemblerGeneralUserSignUp;
+import org.example.page.task.mypage.AssemblerMyPage;
+import org.example.page.task.signin.AssemblerSignIn;
 
 import javax.swing.*;
 
@@ -29,10 +29,10 @@ public class Main {
 
             // 3. PageLoader 구성
             var pageLoader = PageLoaderProvider.builder()
-                    .register(new ExpertUserSignUp(), InjectorExpertUserSignUp.getPage())
-                    .register(new GeneralUserSignUp(), InjectorGeneralUserSignUp.getPage())
-                    .register(new SignIn(), InjectorSignIn.getPage(cookie))
-                    .register(new MyPage(), InjectorMyPage.getPage(cookie))
+                    .register(new ExpertUserSignUp(), AssemblerExpertUserSignUp.getPage())
+                    .register(new GeneralUserSignUp(), AssemblerGeneralUserSignUp.getPage())
+                    .register(new SignIn(), AssemblerSignIn.getPage(cookie))
+                    .register(new MyPage(), AssemblerMyPage.getPage(cookie))
                     .build()
                     .getPageLoader();
 
