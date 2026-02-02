@@ -7,7 +7,7 @@ public class InjectorExpertUserSignUp {
 
     public static AbstractIPage getPage() {
         if (page == null) {
-            synchronized (Page.class) {
+            synchronized (InjectorExpertUserSignUp.class) {
                 if (page == null) {
                     final var request = new Request();
                     final var service = new Service(request);
