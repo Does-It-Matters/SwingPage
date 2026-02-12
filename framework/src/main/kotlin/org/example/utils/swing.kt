@@ -1,4 +1,4 @@
-package org.example.page.task.utils
+package org.example.utils
 
 import java.awt.*
 import javax.swing.*

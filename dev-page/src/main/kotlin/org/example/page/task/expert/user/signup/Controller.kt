@@ -2,7 +2,12 @@ package org.example.page.task.expert.user.signup
 
 import org.example.core.page.presentation.AbstractController
 import org.example.intent.SignIn
-import org.example.page.task.utils.*
+import org.example.utils.button
+import org.example.utils.label
+import org.example.utils.panel
+import org.example.utils.passwordField
+import org.example.utils.textField
+import org.example.utils.vSpace
 import javax.swing.*
 
 internal class Controller(
